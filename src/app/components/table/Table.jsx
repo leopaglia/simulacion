@@ -13,7 +13,8 @@ const Table = ({ results }) => (
       <th className="has-text-centered"><abbr title="Cantidad de desarrolladores Senior">Senior</abbr></th>
       <th className="has-text-centered"><abbr title="Cantidad de desarrolladores no Senior">No Senior</abbr></th>
       <th className="has-text-centered"><abbr title="Cantidad de tickets SEV1 con SLA incumplido">SEV1 Incumplido</abbr></th>
-      <th className="has-text-centered"><abbr title="Cantidad de tickets SEV2 y SEV3 con SLA incumplido">SEV2/3 Incumplido</abbr></th>
+      <th className="has-text-centered"><abbr title="Cantidad de tickets SEV2 con SLA incumplido">SEV2 Incumplido</abbr></th>
+      <th className="has-text-centered"><abbr title="Cantidad de tickets SEV3 con SLA incumplido">SEV3 Incumplido</abbr></th>
     </thead>
     <tbody>
       {results.length === 0 && (
@@ -22,14 +23,20 @@ const Table = ({ results }) => (
         </tr>
       )}
       {results.map(({
-        name, seniorQty, nonSeniorQty, sev1OffSLA, sev23OffSLA,
+        name, 
+        seniorQty, 
+        nonSeniorQty, 
+        percentageSLA1Failed, 
+        percentageSLA2Failed, 
+        percentageSLA3Failed
       }) => (
         <tr>
           <th className="has-text-centered">{name}</th>
           <td className="has-text-centered">{seniorQty}</td>
           <td className="has-text-centered">{nonSeniorQty}</td>
-          <td className="has-text-centered">{`${sev1OffSLA}%`}</td>
-          <td className="has-text-centered">{`${sev23OffSLA}%`}</td>
+          <td className="has-text-centered">{`${percentageSLA1Failed}%`}</td>
+          <td className="has-text-centered">{`${percentageSLA2Failed}%`}</td>
+          <td className="has-text-centered">{`${percentageSLA3Failed}%`}</td>
         </tr>
       ))}
     </tbody>
